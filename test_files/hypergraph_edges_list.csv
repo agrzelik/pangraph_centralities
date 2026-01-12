@@ -1,0 +1,11 @@
+;source;target
+0;[Azteca];[Phorid]
+1;[Scale];[Azteca]
+2;[Azteca];[Beatle]
+3;[Scale];[Beatle]
+4;[Beatle];[Scale]
+5;[Azteca, Scale];[Beatle]
+6;[Azteca, Beatle];[Scale]
+7;[Phorid, Azteca, Scale];[Beatle]
+8;[Phorid, Azteca, Beatle];[Scale]
+9;[Phorid, Azteca];[Beatle]

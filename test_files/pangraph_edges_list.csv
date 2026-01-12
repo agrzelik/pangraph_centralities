@@ -1,0 +1,16 @@
+;start;end
+0;Azteca;(Azteca,Beatle)
+1;Azteca;(Azteca,(Scale,Beatle))
+2;Azteca;(Azteca,(Beatle,Scale))
+3;Beatle;(Beatle,Scale)
+4;Scale;(Scale,Beatle)
+5;(Azteca,Beatle);Beatle
+6;(Scale,Beatle);Beatle
+7;(Beatle,Scale);Scale
+8;(Azteca,(Scale,Beatle));(Scale,Beatle)
+9;(Azteca,(Beatle,Scale));(Beatle,Scale)
+10;Azteca;Phorid
+11;Scale;Azteca
+12;Phorid;(Azteca,(Scale,Beatle))
+13;Phorid;(Azteca,(Beatle,Scale))
+14;Phorid;(Azteca,Beatle)
