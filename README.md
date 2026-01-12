@@ -47,7 +47,7 @@ The final step produces heatmaps to facilitate comparative analysis. These visua
 
 ## Execution & Modes
 
-The entire analysis pipeline can be executed directly using the `run_all.py` script, which runs the flow from data processing to visualization. The behavior of the underlying modules is controlled by a configuration flag: `test_run_on`. Setting this flag to **False** (default) allows for the processing of the full-scale genomic data described in the research article. Alternatively, switching to **True** enables an execution on a minimal dataset. This test option is specifically designed for rapid code verification and includes a comprehensive suite of acceptance tests to ensure that all steps remain consistent and correct.
+The entire analysis pipeline can be executed directly using the `run_all.py` script, which runs the flow from data processing to visualization. The behavior of the underlying modules is controlled by a configuration flag: `test_run_on`. Setting this flag to **False** (default) allows for the processing of the full-scale data described in the research article. Alternatively, switching to **True** enables an execution on a minimal dataset. This test option is specifically designed for rapid code verification and includes a comprehensive suite of acceptance tests to ensure that all steps remain consistent and correct.
 
 ## Citation
  Please, cite as:
