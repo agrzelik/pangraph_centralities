@@ -58,6 +58,7 @@ pip install -r requirements.txt
 
 # Run the complete pipeline
 python run_all.py
+```
 
 ## Citation
  Please, cite as:
