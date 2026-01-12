@@ -28,7 +28,7 @@ We calculate the **Katz centralities** to measure the relative influence of vert
 
 The calculation uses the following matrix formula:
 
-$$C_{Katz} = (I - \alpha A^T)^{-1} \cdot (\beta \cdot \mathbf{1})$$
+$$C_{Katz} = (I - \alpha A^T)^{-1} \cdot \beta$$
 
 Where:
 * $I$ is the identity matrix.
@@ -43,10 +43,21 @@ The final step produces heatmaps to facilitate comparative analysis. These visua
 * **In-centralities:** Comparison of Katz in-centrality scores and vertex in-degrees across representations.
 * **Out-centralities:** Comparison of Katz out-centrality scores and vertex out-degrees across representations.
 
+![Katz Centrality Heatmap](clean_files/heatmap_out.pdf)
 
----
+## Execution & Modes
+
+The entire analysis pipeline can be executed directly using the `run_all.py` script, which runs the flow from data processing to visualization. The behavior of the underlying modules is controlled by a dedicated configuration flag: test_run_on. Setting this flag to **False** (default) allows for the processing of the full-scale genomic data described in the research article. Alternatively, switching to **True** enables an execution on a minimal dataset. This test option is specifically designed for rapid code verification and includes a comprehensive suite of **acceptance tests** to ensure that all steps remain consistent and correct.
 
 ## Citation
  Please, cite as:
-
+ @misc{iskrzyński2025pangraphsmodelshigherorderinteractions,
+       title={Pangraphs as models of higher-order interactions}, 
+       author={Mateusz Iskrzyński and Aleksandra Puchalska and Aleksandra Grzelik and Gökhan Mutlu},
+       year={2025},
+       eprint={2502.10141},
+       archivePrefix={arXiv},
+       primaryClass={physics.soc-ph},
+       url={https://arxiv.org/abs/2502.10141}, 
+ }
  

@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import ast
 
-test_run_on = False
+test_run_on = True
 if test_run_on:
     base_path='test_files/'
 else:

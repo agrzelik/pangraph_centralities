@@ -2,14 +2,14 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-test_run_on = False
+test_run_on = True
 
 if test_run_on:
     base_path = 'test_files/'
 else:
     base_path = 'clean_files/'
 
-def heatmap_plot_new_28112025(df_map):
+def heatmap_plot(df_map):
 
     df = pd.read_csv(base_path+'merged_centralities.csv')
 
@@ -25,7 +25,7 @@ def heatmap_plot_new_28112025(df_map):
     df_in.set_index('species', inplace=True)
     df_in.columns = [
        'Katz_pangraph_in', 
-       'Katz_pangraph_generalised_in', 'in-degree-P','Katz_hypergraph_in','in-degree-H',]
+       'Katz_pangraph_Levi_graph_in', 'in-degree-P','Katz_hypergraph_in','in-degree-H',]
     df_in = df_in.sort_values('Katz_pangraph_in', ascending=False)
     
 
@@ -34,7 +34,7 @@ def heatmap_plot_new_28112025(df_map):
        'out-degree-P', 'Katz_out_H', 'out-degree-H', 'species']]
     df_out.set_index('species', inplace=True)
     df_out.columns = [  'Katz_pangraph_out',
-        'Katz_pangraph_generalised_out','out-degree-P','Katz_hypergraph_out', 'out-degree-H',]
+        'Katz_pangraph_Levi_graph_out','out-degree-P','Katz_hypergraph_out', 'out-degree-H',]
     df_out = df_out.sort_values('Katz_pangraph_out', ascending=False)
 
     for (df_map,type) in zip([df_in,df_out],['in','out']):
@@ -42,7 +42,7 @@ def heatmap_plot_new_28112025(df_map):
         subtle_grey_palette = sns.light_palette("gray", n_colors=10, reverse=False, as_cmap=True)
 
         for i, col in enumerate(df_map.columns):
-            if 'Katz_pangraph_' in col and 'generalised' not in col:
+            if 'Katz_pangraph_' in col and 'Levi_graph' not in col:
                 col_min = df_map[col].min()
                 col_max = df_map[col].max()
                 sns.heatmap(df_map[[col]], annot=True, cmap="crest", fmt='.2f', vmin=0, vmax=50, ax=axes[i], cbar=(i == 8), xticklabels=False)
@@ -64,7 +64,7 @@ def heatmap_plot_new_28112025(df_map):
                     axes[i].set_ylabel('')
 
         plt.tight_layout()
-        fig.savefig(base_path+f'heatmap_new_04122025_{type}.pdf', bbox_inches = "tight")
+        fig.savefig(base_path+f'heatmap_{type}.pdf', bbox_inches = "tight")
 
 df = pd.read_csv(base_path+'merged_degrees.csv')
-heatmap_plot_new_28112025(df)
+heatmap_plot(df)

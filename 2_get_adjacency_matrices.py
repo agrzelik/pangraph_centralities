@@ -4,7 +4,7 @@ import ast
 import numpy as np 
 import os
 
-test_run_on = False
+test_run_on = True
 
 base_path = 'test_files/' if test_run_on else 'clean_files/'
 

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from scipy.linalg import eig, inv
 
-test_run_on = False
+test_run_on = True
 
 if test_run_on:
     base_path = 'test_files/'
