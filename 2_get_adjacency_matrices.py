@@ -4,9 +4,9 @@ import ast
 import numpy as np 
 import os
 
-test_run_on = True
+test_run_on = False
 
-base_path = 'test_files/' if test_run_on else 'clean_files/'
+base_path = 'test_output_files/' if test_run_on else 'output_files/'
 
 h_df = pd.read_csv(base_path+'hypergraph_edges_list.csv', delimiter = ';')
 h_df.columns = ['unnamed', 'in', 'out']
@@ -94,7 +94,7 @@ def test_adjacency_matrix():
             print(f"[FAILED] Adjacency matrix acceptance test: {key}")
 
 def test_degrees():
-    df_code = pd.read_csv('test_files/merged_degrees.csv')
+    df_code = pd.read_csv('test_output_files/merged_degrees.csv')
     df_code = df_code.drop(columns=[c for c in df_code.columns if 'Unnamed' in c])
     df_code = df_code.set_index('species')
     df_input = pd.read_csv('test_input_files/degrees-test.csv')
@@ -140,8 +140,10 @@ for key, source in adjacency_dict.items():
     df = pd.read_csv(source)
     get_node_degrees(df, key)
 
+merge_degrees()
+
 if test_run_on:
     test_adjacency_matrix()
     test_degrees()
 
-merge_degrees()
+

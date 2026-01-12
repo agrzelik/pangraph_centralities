@@ -2,12 +2,12 @@ import numpy as np
 import pandas as pd
 from scipy.linalg import eig, inv
 
-test_run_on = True
+test_run_on = False
 
 if test_run_on:
-    base_path = 'test_files/'
+    base_path = 'test_output_files/'
 else:
-    base_path = 'clean_files/'
+    base_path = 'output_files/'
 
 # REPRESENTATIONS IMPORT
 HAM0 = pd.read_csv(base_path+'adj_matrix_hypergraph.csv')

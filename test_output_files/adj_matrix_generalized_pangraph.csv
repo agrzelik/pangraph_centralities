@@ -1,0 +1,15 @@
+,"(Azteca,Phorid)","(Phorid,(Azteca,(Beatle,Scale)))",Beatle,"(Scale,Azteca)",Phorid,"(Azteca,(Beatle,Scale))","(Azteca,(Scale,Beatle))",Scale,Azteca,"(Beatle,Scale)","(Phorid,(Azteca,Beatle))","(Phorid,(Azteca,(Scale,Beatle)))","(Scale,Beatle)","(Azteca,Beatle)"
+"(Azteca,Phorid)",0,0,0,0,1,0,0,0,0,0,0,0,0,0
+"(Phorid,(Azteca,(Beatle,Scale)))",0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Beatle,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+"(Scale,Azteca)",0,0,0,0,0,0,0,0,1,0,0,0,0,0
+Phorid,0,1,0,0,0,0,0,0,0,0,1,1,0,0
+"(Azteca,(Beatle,Scale))",0,0,0,0,0,0,0,0,0,1,0,0,0,0
+"(Azteca,(Scale,Beatle))",0,0,0,0,0,0,0,0,0,0,0,0,1,0
+Scale,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+Azteca,1,0,0,0,0,1,1,0,0,0,0,0,0,1
+"(Beatle,Scale)",0,0,0,0,0,0,0,1,0,0,0,0,0,0
+"(Phorid,(Azteca,Beatle))",0,0,0,0,0,0,0,0,0,0,0,0,0,1
+"(Phorid,(Azteca,(Scale,Beatle)))",0,0,0,0,0,0,1,0,0,0,0,0,0,0
+"(Scale,Beatle)",0,0,1,0,0,0,0,0,0,0,0,0,0,0
+"(Azteca,Beatle)",0,0,1,0,0,0,0,0,0,0,0,0,0,0

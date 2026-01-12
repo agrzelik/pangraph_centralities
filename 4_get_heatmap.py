@@ -2,12 +2,12 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-test_run_on = True
+test_run_on = False
 
 if test_run_on:
-    base_path = 'test_files/'
+    base_path = 'test_output_files/'
 else:
-    base_path = 'clean_files/'
+    base_path = 'output_files/'
 
 def heatmap_plot(df_map):
 
