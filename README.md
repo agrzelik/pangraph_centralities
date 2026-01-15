@@ -13,7 +13,7 @@ This project provides a pipeline for processing **pangraph incidence matrices**.
 The analysis is divided into four steps:
 
 ### 1. Graph representations
-The pipeline converts the initial incidence matrix into three distinct adjacency list structures:
+The pipeline converts the initial incidence matrix into three distinct edge list structures:
 * **hypergraph**
 * **pangraph** 
 * **pangraph's Levi graph** 
