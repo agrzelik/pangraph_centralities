@@ -3,7 +3,7 @@ import pandas as pd
 from scipy.linalg import eig, inv
 import numpy as np
 
-test_run_on = True
+test_run_on = False
 
 if test_run_on:
     base_path = 'test_output_files/'
