@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from scipy.linalg import eig, inv
+import numpy as np
 
 test_run_on = False
 
@@ -41,6 +42,19 @@ def katz_centrality(obj, b):
     
     return s, leadingeigenvalue
 
+def test_centralities(df):
+    df_test = pd.read_csv('test_input_files/centralities_test_file.csv', delimiter=";", decimal=",")
+    num_cols = ['Katz_in_H','Katz_out_H', 'Katz_in_P', 'Katz_out_P', 'Katz_in_G', 'Katz_out_G']
+
+    passed = np.isclose(df_test[num_cols], df[num_cols], atol=1e-3).all().all()
+
+    if passed:
+        print(f"[PASSED] Centrality values acceptance test")
+    else:
+        print(f"[FAILED] Centrality values acceptance test")
+    
+
+
 # CALCULATIONS
 for df in [HAM0, PAM0, PGAM0]:
     rep, reversed_rep = preprocess_df(df)
@@ -63,6 +77,8 @@ for df in [HAM0, PAM0, PGAM0]:
         # Merge new columns into the main DataFrame
         centrality_df = centrality_df.merge(temp_df, on='species', how='inner')
 
+if test_run_on:
+    test_centralities(centrality_df)
+
 centrality_df.to_csv(base_path+'merged_centralities.csv')
-print('Done')
 
