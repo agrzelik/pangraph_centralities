@@ -13,7 +13,7 @@ This project provides a pipeline for processing **pangraph incidence matrices**.
 The analysis is divided into four steps:
 
 ### 1. Graph representations
-The pipeline converts the initial incidence matrix into three distinct adjacency list structures:
+The pipeline converts the initial incidence matrix into three distinct edge lists:
 * **hypergraph**
 * **pangraph** 
 * **pangraph's Levi graph** 
@@ -24,7 +24,7 @@ In this step, adjacency lists are transformed into **adjacency matrices**. Here,
 * a merged DataFrame containing structural properties for downstream analysis.
 
 ### 3. Katz centrality computation
-We calculate the **Katz centralities** to measure the relative influence of vertices within the network. 
+We compute **Katz centralities** to measure the relative influence of vertices within the network. 
 
 The calculation uses the following matrix formula:
 
