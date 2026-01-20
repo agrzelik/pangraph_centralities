@@ -37,30 +37,46 @@ def heatmap_plot(df_map):
         'Katz_pangraph_Levi_graph_out','out-degree-P','Katz_hypergraph_out', 'out-degree-H',]
     df_out = df_out.sort_values('Katz_pangraph_out', ascending=False)
 
+    latex_labels = {
+    'Katz_pangraph_in': r'$c_{\mathcal{P}}^{in}$',
+    'Katz_pangraph_out': r'$c_{\mathcal{P}}^{out}$',
+    'Katz_pangraph_Levi_graph_in': r'$c_{\mathcal{L}}^{in}$',
+    'Katz_pangraph_Levi_graph_out': r'$c_{\mathcal{L}}^{out}$',
+    'in-degree-P':  r'$\kappa_{\mathcal{P}}^{in}$',
+    'out-degree-P':  r'$\kappa_{\mathcal{P}}^{out}$',
+    'Katz_hypergraph_in': r'$c_{\mathcal{H}}^{in}$',
+    'Katz_hypergraph_out': r'$c_{\mathcal{H}}^{out}$',
+    'in-degree-H':  r'$\kappa_{\mathcal{H}}^{in}$',
+    'out-degree-H': r'$\kappa_{\mathcal{H}}^{out}$'
+    }
+
     for (df_map,type) in zip([df_in,df_out],['in','out']):
         fig, axes = plt.subplots(1, df_map.shape[1], figsize=(15, 15))
         subtle_grey_palette = sns.light_palette("gray", n_colors=10, reverse=False, as_cmap=True)
+        
 
         for i, col in enumerate(df_map.columns):
+            display_col = latex_labels.get(col, col)
             if 'Katz_pangraph_' in col and 'Levi_graph' not in col:
                 col_min = df_map[col].min()
                 col_max = df_map[col].max()
-                sns.heatmap(df_map[[col]], annot=True, cmap="crest", fmt='.2f', vmin=0, vmax=50, ax=axes[i], cbar=(i == 8), xticklabels=False)
-                axes[i].set_title(f"{col}")
+                sns.heatmap(df_map[[col]], annot=True, annot_kws={"size": 20}, cmap="crest", fmt='.2f', vmin=0, vmax=50, ax=axes[i], cbar=(i == 8), xticklabels=False)
+                axes[i].set_title(f"{display_col}", fontsize=20)
                 axes[i].set_xlabel('')
                 axes[i].set_ylabel('')
+                axes[i].tick_params(axis='y', labelsize=20)
             else:
                 if 'Katz' in str(col):
                     col_min = df_map[col].min()
                     col_max = df_map[col].max()
-                    sns.heatmap(df_map[[col]], annot=True, cmap="crest", fmt='.2f', vmin=0, vmax=50, ax=axes[i], cbar=(i == 8), xticklabels = False, yticklabels=False)
-                    axes[i].set_title(f"{col}")
+                    sns.heatmap(df_map[[col]], annot=True, annot_kws={"size": 20}, cmap="crest", fmt='.2f', vmin=0, vmax=50, ax=axes[i], cbar=(i == 8), xticklabels = False, yticklabels=False)
+                    axes[i].set_title(f"{display_col}", fontsize=20)
                     axes[i].set_ylabel('')
                 else:
                     col_min = df_map[col].min()
                     col_max = df_map[col].max()
-                    sns.heatmap(df_map[[col]], annot=True, cmap=subtle_grey_palette, vmin=1, vmax=26, ax=axes[i], cbar=(i == 8), xticklabels = False, yticklabels=False)
-                    axes[i].set_title(f"{col}")
+                    sns.heatmap(df_map[[col]], annot=True, annot_kws={"size": 20}, cmap=subtle_grey_palette, vmin=1, vmax=26, ax=axes[i], cbar=(i == 8), xticklabels = False, yticklabels=False)
+                    axes[i].set_title(f"{display_col}", fontsize=20)
                     axes[i].set_ylabel('')
 
         plt.tight_layout()
