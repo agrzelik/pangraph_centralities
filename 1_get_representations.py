@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import ast
 
-test_run_on = False
+test_run_on = True
 
 if test_run_on:
     base_path='test_output_files/'
@@ -81,7 +81,7 @@ def preprocessing():
                 incidence_edges.append({'0': col, '1': row})
 
     incidence_edges_df = pd.DataFrame(incidence_edges)
-    incidence_edges_df.to_csv(base_path+'generalized_pangraph_edges_list.csv', sep=';',encoding='utf-8')
+    incidence_edges_df.to_csv(base_path+'levi_pangraph_edges_list.csv', sep=';',encoding='utf-8')
     levi_edges = incidence_edges_df
 
     levi_edges.columns = ['start','end']

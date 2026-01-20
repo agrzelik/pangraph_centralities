@@ -3,7 +3,7 @@ import pandas as pd
 from scipy.linalg import eig, inv
 import numpy as np
 
-test_run_on = False
+test_run_on = True
 
 if test_run_on:
     base_path = 'test_output_files/'
@@ -15,7 +15,7 @@ HAM0 = pd.read_csv(base_path+'adj_matrix_hypergraph.csv')
 HAM0 = HAM0.drop(columns=['Unnamed: 0'])
 PAM0 = pd.read_csv(base_path+'adj_matrix_pangraph.csv')
 PAM0 = PAM0.drop(columns=['Unnamed: 0'])
-PGAM0 = pd.read_csv(base_path+'adj_matrix_generalized_pangraph.csv')
+PGAM0 = pd.read_csv(base_path+'adj_matrix_levi_pangraph.csv')
 PGAM0 = PGAM0.drop(columns=['Unnamed: 0'])
 # Attribute names to dataframes
 HAM0.name = "HAM0"
@@ -54,7 +54,6 @@ def test_centralities(df):
         print(f"[FAILED] Centrality values acceptance test")
     
 
-
 # CALCULATIONS
 for df in [HAM0, PAM0, PGAM0]:
     rep, reversed_rep = preprocess_df(df)
@@ -76,6 +75,8 @@ for df in [HAM0, PAM0, PGAM0]:
     else:
         # Merge new columns into the main DataFrame
         centrality_df = centrality_df.merge(temp_df, on='species', how='inner')
+
+    
 
 if test_run_on:
     test_centralities(centrality_df)

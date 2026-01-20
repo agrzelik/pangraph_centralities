@@ -4,13 +4,13 @@ import ast
 import numpy as np 
 import os
 
-test_run_on = False
+test_run_on = True
 
 base_path = 'test_output_files/' if test_run_on else 'output_files/'
 
 h_df = pd.read_csv(base_path+'hypergraph_edges_list.csv', delimiter = ';')
 h_df.columns = ['unnamed', 'in', 'out']
-p_old_df = pd.read_csv(base_path+'generalized_pangraph_edges_list.csv', delimiter = ';')
+p_old_df = pd.read_csv(base_path+'levi_pangraph_edges_list.csv', delimiter = ';')
 p_old_df.columns = ['unnamed', 'in', 'out']
 p_new_df = pd.read_csv(base_path+'pangraph_edges_list.csv', delimiter = ';')
 p_new_df.columns = ['unnamed', 'in', 'out']
@@ -40,7 +40,7 @@ def get_adjacency_matrix(df, type):
 
 options_dict = {'hypergraph': h_df,
                 'pangraph': p_new_df,
-                'generalized_pangraph': p_old_df}
+                'levi_pangraph': p_old_df}
 
 
 
@@ -68,7 +68,7 @@ def get_h_adjacency_alternative(df, type):
 
 adjacency_dict = {'hypergraph': base_path+'adj_matrix_hypergraph.csv',
                 'pangraph': base_path+'adj_matrix_pangraph.csv',
-                'generalized_pangraph': base_path+'adj_matrix_generalized_pangraph.csv'}
+                'levi_pangraph': base_path+'adj_matrix_levi_pangraph.csv'}
 
 def sort_df(df):
     df = df.reindex(sorted(df.columns), axis=1)

@@ -2,7 +2,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-test_run_on = False
+test_run_on = True
 
 if test_run_on:
     base_path = 'test_output_files/'
