@@ -2,13 +2,6 @@ import pandas as pd
 import os
 import ast
 
-test_run_on = False
-
-if test_run_on:
-    base_path='test_output_files/'
-else:
-    base_path='output_files/'
-
 def getends(panedge):#Returns [e^in, e^out] for an panedge given as string
     d=0
     i=0
@@ -125,7 +118,7 @@ def preprocessing():
 
 
 def df_operations(df, to_add, to_del):
-     
+    #operations performed to get df containing pangraph edges list
     df_new = df.copy(deep=True)
      
     df_new = df_new.drop(to_del)
@@ -158,6 +151,7 @@ def df_operations(df, to_add, to_del):
     return df_new
 
 def split_edges(raw_list):
+    #getting source and target of the edge from the raw list format
     rows = []
 
     for s in raw_list:
@@ -177,39 +171,44 @@ def split_edges(raw_list):
             right =  '[[' + right
         elif ']' in right:
             right = '[' + right         
-        #left = left.replace("[[", "(") + ')'
-        #right = '(' + right.replace("]]", ")") 
 
         rows.append((left, right))
 
     return pd.DataFrame(rows, columns=["source", "target"])
         
 if (hyper_from_pan('(a,(b,c))')!=[['a', 'b'], ['c']]): print('ERROR test 1 not passed')
-else: print('[PASSED] Test 1 passed')
+else: print('[PASSED] Edge depth 1 structure test')
 
 if (hyper_from_pan('(a,(b,(c,d)))')!=[['a', 'b', 'c'], ['d']]): print('ERROR test 2 not passed')
-else: print('[PASSED] Test 2 passed')
+else: print('[PASSED] Edge depth 2 structure test')
 
 
 
+for test_run_on in [True, False]:
+    #running processing for test case and coffee agroecosystem 
 
-if test_run_on==True:
-    m=pd.read_csv("files/test_incidence.csv" , delimiter= ';', encoding='utf-8', header=0, index_col=0)
-else:
-    m=pd.read_csv("files/pangraph_incidence.csv" , delimiter= ';', encoding='utf-8', header=0, index_col=0)
-edge_list=m.index
+    if test_run_on:
+        base_path='test_output_files/adjacency_edges_list_files/'
+    else:
+        base_path='output_files/adjacency_edges_list_files/'
 
-hyperedge_list=[]
-for s in edge_list:
-    if '(' in s and ',' in s:
-        hyperedge_list.append(hyper_from_pan(s))
+    if test_run_on==True:
+        m=pd.read_csv("files/test_incidence.csv" , delimiter= ';', encoding='utf-8', header=0, index_col=0)
+    else:
+        m=pd.read_csv("files/pangraph_incidence.csv" , delimiter= ';', encoding='utf-8', header=0, index_col=0)
+    edge_list=m.index
+
+    hyperedge_list=[]
+    for s in edge_list:
+        if '(' in s and ',' in s:
+            hyperedge_list.append(hyper_from_pan(s))
 
 
-hyperedges_df = split_edges(hyperedge_list)
-hyperedges_df["source"] = hyperedges_df["source"].apply(lambda x: x.replace('[[', '[').replace(']]', ']').replace("'",""))
-hyperedges_df["target"] = hyperedges_df["target"].apply(lambda x: x.replace(']]', ']').replace('[[', '[').replace("'",""))
+    hyperedges_df = split_edges(hyperedge_list)
+    hyperedges_df["source"] = hyperedges_df["source"].apply(lambda x: x.replace('[[', '[').replace(']]', ']').replace("'",""))
+    hyperedges_df["target"] = hyperedges_df["target"].apply(lambda x: x.replace(']]', ']').replace('[[', '[').replace("'",""))
 
-hyperedges_df.to_csv(base_path+"hypergraph_edges_list.csv", sep=';',encoding='utf-8')
+    hyperedges_df.to_csv(base_path+"hypergraph_edges_list.csv", sep=';',encoding='utf-8')
 
-to_add, to_del, levi_edges = preprocessing()
-new_edges_df = df_operations(levi_edges, to_add, to_del)
+    to_add, to_del, levi_edges = preprocessing()
+    new_edges_df = df_operations(levi_edges, to_add, to_del)
