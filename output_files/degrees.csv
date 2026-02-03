@@ -1,4 +1,4 @@
-Unnamed: 0,species,degree_in_hypergraph,degree_out_hypergraph,degree_in_pangraph,degree_out_pangraph,degree_in_generalized_pangraph,degree_out_generalized_pangraph
+Unnamed: 0,species,degree_in_hypergraph,degree_out_hypergraph,degree_in_pangraph,degree_out_pangraph,degree_in_levi_pangraph,degree_out_levi_pangraph
 0,Azteca,4,26,2,18,2,18
 1,Azya orbigera,16,9,4,5,4,5
 2,Berry Borer,7,6,5,5,5,5
