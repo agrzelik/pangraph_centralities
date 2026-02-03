@@ -4,16 +4,30 @@
 ![Python](https://img.shields.io/badge/python-3.13-blue.svg)
 
 ## Project overview
-This project provides a pipeline for processing **pangraph incidence matrices**. It transforms initial file into multiple graph representations, computes Katz centrality values, and generates comparative visualizations. The goal is to analyze the structural importance of fundamental vertices across different graph interpretations (hypergraph, pangraph, and pangraph's Levi graph).
+This project provides a pipeline for processing **pangraph incidence matrices**. It transforms initial file representing coffee agroecosystem, as in **link** , into multiple graph representations, computes Katz centrality values, and compares them using heatmaps. This showcases the structural importance of fundamental vertices across different graph interpretations (hypergraph, pangraph, and pangraph's Levi graph). 
+
+Program umozliwia obliczenie stopni dla dowolnego pangrafu na podstawie jego macierzy incydencji. 
 
 ---
+## Installation & setup
+To ensure all dependencies are compatible with Python 3.13, install the required packages using the provided `requirements.txt` file:
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the complete pipeline
+python run_all.py
+```
+The key output files are: `output_files/heatmap_in.pdf`, `output_files/heatmap_out.pdf`, `output_files/katz_centralities.csv`
+
 
 ## Workflow & methodology
 
 The analysis is divided into four steps:
 
 ### 1. Graph representations
-The pipeline converts the initial incidence matrix into three distinct edge lists:
+The pipeline converts the initial, unweighted incidence matrix (`files/pangraph_incidence.csv`) into three distinct edge lists:
 * **hypergraph**
 * **pangraph** 
 * **pangraph's Levi graph** 
@@ -45,20 +59,13 @@ The final step produces heatmaps to facilitate comparative analysis. These visua
 
 [Katz Centrality Heatmap](output_files/heatmap_out.pdf)
 
+## Input & output
+
+Format macierzy incydencji i output to tabele centralności Katza. 
+
 ## Execution & modes
 
 The entire analysis pipeline can be executed directly using the `run_all.py` script, which runs the flow from data processing to visualization. The behavior of the underlying modules is controlled by a configuration flag: `test_run_on`. Setting this flag to **False** (default) allows for the processing of the full-scale data described in the research article. Alternatively, switching to **True** enables an execution on a minimal dataset. This test option is specifically designed for rapid code verification and includes a comprehensive suite of acceptance tests to ensure that all steps remain consistent and correct. 
-
-## Installation & setup
-To ensure all dependencies are compatible with Python 3.13, install the required packages using the provided `requirements.txt` file:
-
-```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the complete pipeline
-python run_all.py
-```
 
 ## Citation
  Please, cite as:
