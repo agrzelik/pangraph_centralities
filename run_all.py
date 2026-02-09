@@ -33,7 +33,7 @@ def main():
             print(f"No script for step {i}")
             sys.exit(1)
         run_script(script)
-    print("All steps ended OK.")
+    print("All steps ended OK. Heatmaps and centrality files saved to ./output_files and ./test_output_files")
 
 if __name__ == "__main__":
     main()
