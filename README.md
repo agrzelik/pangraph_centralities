@@ -59,6 +59,7 @@ The final step produces heatmaps to facilitate comparative analysis. These visua
 ## Input & output
 
 **Input:** a pangraph incidence matrix (csv), rows and columns represent pangraph vetices, with edges connecting them (0/1 entries) 
+
 **Output:** tables (csv) containing Katz centrality values for each vertex, computed for hypergraph, pangraph, pangraph’s Levi graph, heatmap visualisations (pdf).
 
 ## Execution & modes
