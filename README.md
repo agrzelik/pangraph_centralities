@@ -4,9 +4,7 @@
 ![Python](https://img.shields.io/badge/python-3.13-blue.svg)
 
 ## Project overview
-This project provides a pipeline for processing **pangraph incidence matrices**. It transforms initial file containing representation of the coffee agroecosystem, as in **link** , into multiple graph representations, computes Katz centrality values, and compares them using heatmaps. This showcases the structural importance of fundamental vertices across different graph interpretations (hypergraph, pangraph, and pangraph's Levi graph). 
-
-Program umozliwia obliczenie stopni dla dowolnego pangrafu na podstawie jego macierzy incydencji. 
+This project provides a pipeline for processing **pangraph incidence matrices**. It transforms initial file containing representation of the coffee agroecosystem, as in **[reference paper](https://www.annualreviews.org/content/journals/10.1146/annurev-ecolsys-120213-091923)** , into multiple graph representations, computes Katz centrality values, and compares them using heatmaps. This showcases the structural importance of fundamental vertices across different graph interpretations (hypergraph, pangraph, and pangraph's Levi graph). The program computes the degree measures for any pangraph based on its incidence matrix.
 
 ---
 ## Installation & setup
@@ -60,7 +58,9 @@ The final step produces heatmaps to facilitate comparative analysis. These visua
 
 ## Input & output
 
-Format macierzy incydencji i output to tabele centralności Katza. 
+**Input:** a pangraph incidence matrix (csv), rows and columns represent pangraph vertices, with edges connecting them (0/1 entries) 
+
+**Output:** tables (csv) containing Katz centrality values for each vertex, computed for hypergraph, pangraph, pangraph’s Levi graph, heatmap visualisations (pdf).
 
 ## Execution & modes
 
