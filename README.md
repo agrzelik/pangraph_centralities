@@ -4,7 +4,7 @@
 ![Python](https://img.shields.io/badge/python-3.13-blue.svg)
 
 ## Project overview
-This project provides a pipeline for processing **pangraph incidence matrices** and supports the article **[Pangraphs as models of higher order interactions](https://arxiv.org/abs/2502.10141)**. It transforms a file containing the representation of the coffee agroecosystem, as in **[reference paper](https://www.annualreviews.org/content/journals/10.1146/annurev-ecolsys-120213-091923)** , into multiple graph representations, computes Katz centrality values, and compares them using heatmaps. This compares the structural importance of fundamental vertices according to different graph representations (hypergraph, pangraph, and pangraph's Levi graph). The program also computes the degree measures for any pangraph based on its incidence matrix.
+This project supports the article **[Pangraphs as models of higher order interactions](https://arxiv.org/abs/2502.10141)**. Starting with a pangraph, representing **[the coffee agroecosystem](https://www.annualreviews.org/content/journals/10.1146/annurev-ecolsys-120213-091923)**, it constructs alternative graph representations, computes Katz centrality values, and visualises them using heatmaps. This compares the structural importance of fundamental vertices according to different graph representations (hypergraph, pangraph, and pangraph's Levi graph). The program also computes the degree measures for any pangraph based on its Levi graph adjacency matrix.
 
 ---
 ## Installation & setup
