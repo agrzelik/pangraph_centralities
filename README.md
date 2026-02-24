@@ -4,7 +4,7 @@
 ![Python](https://img.shields.io/badge/python-3.13-blue.svg)
 
 ## Project overview
-This project provides a pipeline for processing **pangraph's Levi graph adjacency matrices**. It transforms initial file containing representation of the coffee agroecosystem, as in **[reference paper](https://www.annualreviews.org/content/journals/10.1146/annurev-ecolsys-120213-091923)** , into multiple graph representations, computes Katz centrality values, and compares them using heatmaps. This showcases the structural importance of fundamental vertices across different graph interpretations (hypergraph, pangraph, and pangraph's Levi graph). The program computes the degree measures for any pangraph based on its Levi graph adjacency matrix.
+This project provides a pipeline for processing **pangraph incidence matrices** and supports the article **[Pangraphs as models of higher order interactions](https://arxiv.org/abs/2502.10141)**. It transforms a file containing the representation of the coffee agroecosystem, as in **[reference paper](https://www.annualreviews.org/content/journals/10.1146/annurev-ecolsys-120213-091923)** , into multiple graph representations, computes Katz centrality values, and compares them using heatmaps. This compares the structural importance of fundamental vertices according to different graph representations (hypergraph, pangraph, and pangraph's Levi graph). The program also computes the degree measures for any pangraph based on its incidence matrix.
 
 ---
 ## Installation & setup
@@ -43,9 +43,9 @@ $$C_{Katz} = (I - \alpha A^T)^{-1} \cdot \beta$$
 
 Where:
 * $I$ is the identity matrix.
-* $\alpha$ is a parameter that is set to be the inversion of the leading eigenvalue.
+* $\alpha$ is a free parameter set to 0.9 times the inversion of the leading eigenvalue.
 * $A^T$ is the transposed adjacency matrix.
-* $\beta$ is a parameter set to 1. 
+* $\beta$ is a free parameter set to 1. 
 
 ### 4. Visualization & heatmap analysis
 The final step produces heatmaps to facilitate comparative analysis. These visualizations allow for an intuitive comparison of vertex importance across the three graph representations.
@@ -64,7 +64,7 @@ The final step produces heatmaps to facilitate comparative analysis. These visua
 
 ## Execution & modes
 
-The entire analysis pipeline can be executed directly using the `run_all.py` script, which runs the flow from data processing to visualization. The behavior of the underlying modules is controlled by a configuration flag: `test_run_on`. Setting this flag to **False** (default) allows for the processing of the full-scale data described in the research article. Alternatively, switching to **True** enables an execution on a minimal dataset. This test option is specifically designed for rapid code verification and includes a comprehensive suite of acceptance tests to ensure that all steps remain consistent and correct. 
+The entire analysis pipeline can be executed directly using the `run_all.py` script, which runs the flow from initial data processing to visualization. The behavior of the underlying modules is controlled by a configuration flag: `test_run_on`. Setting this flag to **False** allows for the processing of the full-scale data described in the research article. Alternatively, switching to **True** enables an execution on a minimal dataset. The default option runs both test and full-scale examples. This test option is specifically designed for rapid code verification and includes a comprehensive suite of acceptance tests to ensure that all steps remain consistent and correct.
 
 ## Citation
  Please, cite as:
