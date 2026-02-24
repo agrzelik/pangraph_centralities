@@ -1,6 +1,10 @@
+'''
+This file processes the adjacency matrices of pangraph's Levi graph. It uses the labels of columns and rows to deduce vertices,
+edges and orientations: convention (u,v) = edge from u to v. To get hyperedges it effectively flattens the nested structure of pangraph interactions.
+The output of the file consists of edge lists for compared representations. 
+'''
+
 import pandas as pd
-import os
-import ast
 
 def getends(panedge):#Returns [e^in, e^out] for an panedge given as string
     d=0
@@ -64,25 +68,25 @@ def clear(string1):
 
 def preprocessing():
     if test_run_on == True:
-        ubergraph_incidence = pd.read_csv('./files/test_incidence.csv', delimiter=';', index_col='Unnamed: 0')
+        pangraph_levi_adjacency = pd.read_csv('./files/test_levi_adjacency.csv', delimiter=';', index_col='Unnamed: 0')
     else:
-        ubergraph_incidence = pd.read_csv('./files/pangraph_incidence.csv', delimiter=';', index_col='Unnamed: 0')
-    incidence_edges = []
-    for col in ubergraph_incidence.columns:
-        for row in ubergraph_incidence.index:
-            if ubergraph_incidence.at[row, col] == 1:
-                incidence_edges.append({'0': col, '1': row})
+        pangraph_levi_adjacency = pd.read_csv('./files/pangraph_levi_adjacency.csv', delimiter=';', index_col='Unnamed: 0')
+    levi_edges = []
+    for col in pangraph_levi_adjacency.columns:
+        for row in pangraph_levi_adjacency.index:
+            if pangraph_levi_adjacency.at[row, col] == 1:
+                levi_edges.append({'0': col, '1': row})
 
-    incidence_edges_df = pd.DataFrame(incidence_edges)
-    incidence_edges_df.to_csv(base_path+'levi_pangraph_edges_list.csv', sep=';',encoding='utf-8')
-    levi_edges = incidence_edges_df
+    levi_edges_df = pd.DataFrame(levi_edges)
+    levi_edges_df.to_csv(base_path+'levi_pangraph_edges_list.csv', sep=';',encoding='utf-8')
+    levi_edges = levi_edges_df
 
     levi_edges.columns = ['start','end']
 
-    deg_out = ubergraph_incidence.sum(axis=0)
-    deg_in = ubergraph_incidence.sum(axis=1)
+    deg_out = pangraph_levi_adjacency.sum(axis=0)
+    deg_in = pangraph_levi_adjacency.sum(axis=1)
 
-    vertex_list = ubergraph_incidence.columns
+    vertex_list = pangraph_levi_adjacency.columns
     vertex_list = list(vertex_list)
 
     new_edges_df = levi_edges.copy()
@@ -193,9 +197,9 @@ for test_run_on in [True, False]:
         base_path='output_files/adjacency_edges_list_files/'
 
     if test_run_on==True:
-        m=pd.read_csv("files/test_incidence.csv" , delimiter= ';', encoding='utf-8', header=0, index_col=0)
+        m=pd.read_csv("files/test_levi_adjacency.csv" , delimiter= ';', encoding='utf-8', header=0, index_col=0)
     else:
-        m=pd.read_csv("files/pangraph_incidence.csv" , delimiter= ';', encoding='utf-8', header=0, index_col=0)
+        m=pd.read_csv("files/pangraph_levi_adjacency.csv" , delimiter= ';', encoding='utf-8', header=0, index_col=0)
     edge_list=m.index
 
     hyperedge_list=[]

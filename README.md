@@ -4,7 +4,7 @@
 ![Python](https://img.shields.io/badge/python-3.13-blue.svg)
 
 ## Project overview
-This project provides a pipeline for processing **pangraph incidence matrices**. It transforms initial file containing representation of the coffee agroecosystem, as in **[reference paper](https://www.annualreviews.org/content/journals/10.1146/annurev-ecolsys-120213-091923)** , into multiple graph representations, computes Katz centrality values, and compares them using heatmaps. This showcases the structural importance of fundamental vertices across different graph interpretations (hypergraph, pangraph, and pangraph's Levi graph). The program computes the degree measures for any pangraph based on its incidence matrix.
+This project provides a pipeline for processing **pangraph's Levi graph adjacency matrices**. It transforms initial file containing representation of the coffee agroecosystem, as in **[reference paper](https://www.annualreviews.org/content/journals/10.1146/annurev-ecolsys-120213-091923)** , into multiple graph representations, computes Katz centrality values, and compares them using heatmaps. This showcases the structural importance of fundamental vertices across different graph interpretations (hypergraph, pangraph, and pangraph's Levi graph). The program computes the degree measures for any pangraph based on its Levi graph adjacency matrix.
 
 ---
 ## Installation & setup
@@ -24,7 +24,7 @@ The key output files are: `output_files/heatmap_in.pdf`, `output_files/heatmap_o
 The analysis is divided into four steps:
 
 ### 1. Graph representations
-The pipeline converts the initial, unweighted incidence matrix (`files/pangraph_incidence.csv`) into three distinct edge lists:
+The pipeline converts the initial, unweighted adjacency matrix of the pangraph's Levi graph (`files/pangraph_levi_adjacency.csv`) into three distinct edge lists:
 * **hypergraph**
 * **pangraph** 
 * **pangraph's Levi graph** 
@@ -58,7 +58,7 @@ The final step produces heatmaps to facilitate comparative analysis. These visua
 
 ## Input & output
 
-**Input:** a pangraph incidence matrix (csv), rows and columns represent pangraph vertices, with edges connecting them (0/1 entries) 
+**Input:** a pangraph's Levi graph adjacency matrix (csv), rows and columns represent Levi graph vertices (i.e. pangraph's fundamental vertices and panedges). Labels follow the convention (u,v) = edge from u to v. Matrix element equals one, when there is a Levi graph edge from column to row, zero when no edge is present.
 
 **Output:** tables (csv) containing Katz centrality values for each vertex, computed for hypergraph, pangraph, pangraph’s Levi graph, heatmap visualisations (pdf).
 

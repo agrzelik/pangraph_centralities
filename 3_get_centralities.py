@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from scipy.linalg import eig, inv
-import numpy as np
+
 
 def preprocess_df(df):
     #preparing representations for in- and out-centrality calculation

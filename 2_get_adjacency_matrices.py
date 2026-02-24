@@ -1,7 +1,4 @@
 import pandas as pd
-import networkx as nx
-import ast
-import numpy as np 
 import os
 
 def parse_entry(x):
@@ -14,7 +11,7 @@ def parse_entry(x):
     return [x]
 
 def get_adjacency_matrix(df, type):
-    #get adjacency matrix for pangraph, pangraph's levi graph 
+    #get adjacency matrix A^{out} for pangraph, pangraph's levi graph,
     nodes = list(set(df['in']).union(set(df['out'])))
     A = [[0 for _ in nodes] for _ in nodes]
 
@@ -28,7 +25,7 @@ def get_adjacency_matrix(df, type):
     adj_matrix.to_csv(base_path+f'adj_matrix_{type}.csv')
 
 def get_h_adjacency_alternative(df, type):
-    #get adjacency matrix for hypergraph
+    #get adjacency matrix A^{out} for hypergraph,
     multiedges = []
 
     for idx, row in df.iterrows():
