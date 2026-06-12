@@ -15,12 +15,12 @@ def getends(panedge):#Returns [e^in, e^out] for an panedge given as string
     
     for x in u:
        
-       if x=='(': d+=1
+       if x=='(': d+=1.  #then the nearest comma won't be the main comma of the panedge
        elif x==')': d+=-1
        elif x==',':
            if len(u)<=i+1: 
                raise Exception("Incomplete panedge, some brackets are missing")
-           elif d==0: 
+           elif d==0: #we know this is the main comma
                return(list([u[:i],u[i+1:]])) #return [e^in, e^out]
                    
        i+=1
@@ -35,16 +35,19 @@ def flatten(foo):
             yield x
     
 def hyper_from_pan(panedge): 
+    ''' Given a panedge computes the corresponding hyperedge.'''
+
     commas=panedge.split(',')
     if len(commas)<=1: raise Exception("panedge does not contain a comma")
     ends=getends(panedge)
-    if len(commas)==2:
-        
+    if len(commas)==2: #then we know ends are fundamental vertices
         return(ends)
-    comm_ends=[ends[j].split(',') for j in [0,1]]
+    
+    #the HOI case
+    comm_ends=[ends[j].split(',') for j in [0,1]] #list of 2 lists
     hyperedge=[[],[]]
     for k in [0,1]:
-        if len(comm_ends[k])<2: 
+        if len(comm_ends[k])<2: #one of e^in/e^out is a fundamental vertex
             hyperedge[k].append(ends[k]) #we save vertices from in to in; from out to out;
         else: #otherwise we enter recursion
             other_k=(k+1) % 2
@@ -66,129 +69,15 @@ def process_edges(x):
 def clear(string1):
     return string1.replace(' ', '')
 
-def preprocessing():
-    if test_run_on == True:
-        pangraph_levi_adjacency = pd.read_csv('./files/test_levi_adjacency.csv', delimiter=';', index_col='Unnamed: 0')
-    else:
-        pangraph_levi_adjacency = pd.read_csv('./files/pangraph_levi_adjacency.csv', delimiter=';', index_col='Unnamed: 0')
-    levi_edges = []
-    for col in pangraph_levi_adjacency.columns:
-        for row in pangraph_levi_adjacency.index:
-            if pangraph_levi_adjacency.at[row, col] == 1:
-                levi_edges.append({'0': col, '1': row})
+def levi_from_pan(panedge):
+    """ Each panedge e is a Levi graph vertex and means 2 Levi graph edges: (e^in, e) and (e,e^out)."""
+    commas=panedge.split(',')
+    if len(commas)<=1: raise Exception("panedge does not contain a comma")
+    else: 
+        ends=getends(panedge)
+        return([[ends[0],ends],[ends,ends[1]]]) 
 
-    levi_edges_df = pd.DataFrame(levi_edges)
-    levi_edges_df.to_csv(base_path+'levi_pangraph_edges_list.csv', sep=';',encoding='utf-8')
-    levi_edges = levi_edges_df
-
-    levi_edges.columns = ['start','end']
-
-    deg_out = pangraph_levi_adjacency.sum(axis=0)
-    deg_in = pangraph_levi_adjacency.sum(axis=1)
-
-    vertex_list = pangraph_levi_adjacency.columns
-    vertex_list = list(vertex_list)
-
-    new_edges_df = levi_edges.copy()
-    to_del = []
-    to_add = []
-
-    del_count, add_count = 0, 0
-
-    for edge2 in vertex_list:#edge2 is in V \cup E_P and if it is not in V_P we will replace it by adjacency relation between its ends
-            if '(' in edge2:#is an edge
-                if (deg_out[edge2]==1 and deg_in[edge2]==1):#nothing points at it, is not in V_P
-                    #print(edge2)
-                    for index,row in levi_edges.iterrows():
-                        new_start, new_end = None, None
-                        #print(row['start'] == edge2)
-
-                        if clear(row['start']) == clear(edge2):#so row is the relation starting in edge2
-                            new_end = row['end']#and pointing at row['end']
-
-                        if clear(row['end']) == clear(edge2):#this time row points at edge2 
-                            new_start = row['start']#and starts in row['start']
-                        #so knowing degrees equal to 1, we know there is only one end and one start
-                        if ((clear(row['start']) == clear(edge2)) or (clear(row['end']) == clear(edge2))):#here we save which rows pointing/starting at edge2 will be replaced by one edge
-                            to_del.append(index)
-                            del_count += 1
-                            key = edge2
-
-                        if ((new_start is not None) or (new_end is not None)):
-                            #print(new_start, new_end)
-                            add_count += 1
-                            to_add.append([key, new_start, new_end])#here we save the new, direct edge
-    return to_add, to_del, levi_edges
-
-
-def df_operations(df, to_add, to_del):
-    #operations performed to get df containing pangraph edges list
-    df_new = df.copy(deep=True)
-     
-    df_new = df_new.drop(to_del)
-
-    add_dict= {}
-    add_rows = {}
-
-    for sublist in to_add:
-        key = sublist[0] 
-        if key not in add_dict:
-            add_dict[key] = []
-        add_dict[key].append(sublist)
-
-    for key, item in add_dict.items():
-
-        base_start = item[0]
-        base_end = item[1]
-
-        if base_start[1] is not None:
-            new_start = base_start[1]
-            new_end = base_end[2]
-        else:
-            new_end = base_start[2]
-            new_start = base_end[1]
-
-        df_new = df_new._append({'start': new_start, 'end': new_end}, ignore_index=True)
-
-    df_new.to_csv(base_path+'pangraph_edges_list.csv', sep=';',encoding='utf-8')
-
-    return df_new
-
-def split_edges(raw_list):
-    #getting source and target of the edge from the raw list format
-    rows = []
-
-    for s in raw_list:
-        s_clean = str(s)
-
-        if '], [' in s_clean:
-            left, right = s_clean.split('], [')
-        else:
-            left, right = s_clean.split("', '")
-
-        if '[[' in left:
-            left =  left + ']]'
-        elif '[' in left:
-            left = left + ']'
-
-        if ']]' in right:
-            right =  '[[' + right
-        elif ']' in right:
-            right = '[' + right         
-
-        rows.append((left, right))
-
-    return pd.DataFrame(rows, columns=["source", "target"])
-        
-if (hyper_from_pan('(a,(b,c))')!=[['a', 'b'], ['c']]): print('ERROR test 1 not passed')
-else: print('[PASSED] Edge depth 1 structure test')
-
-if (hyper_from_pan('(a,(b,(c,d)))')!=[['a', 'b', 'c'], ['d']]): print('ERROR test 2 not passed')
-else: print('[PASSED] Edge depth 2 structure test')
-
-
-
-for test_run_on in [True, False]:
+for test_run_on in [ False]:#[True, False]:
     #running processing for test case and coffee agroecosystem 
 
     if test_run_on:
@@ -196,23 +85,45 @@ for test_run_on in [True, False]:
     else:
         base_path='output_files/adjacency_edges_list_files/'
 
-    if test_run_on==True:
-        m=pd.read_csv("files/test_levi_adjacency.csv" , delimiter= ';', encoding='utf-8', header=0, index_col=0)
+    if test_run_on == True:
+        panedges = pd.read_csv('./files/pangraph-test.csv', delimiter=';', index_col=0, header = None)
     else:
-        m=pd.read_csv("files/pangraph_levi_adjacency.csv" , delimiter= ';', encoding='utf-8', header=0, index_col=0)
-    edge_list=m.index
+        panedges = pd.read_csv('./files/panedges.csv', delimiter=';', index_col=0, header = None)
 
-    hyperedge_list=[]
-    for s in edge_list:
-        if '(' in s and ',' in s:
-            hyperedge_list.append(hyper_from_pan(s))
+    panedges.columns = ['panedges']
+    panedges_list = list(panedges['panedges'])
 
+    pan_df = []
+    
+    for panedge in panedges_list:
+            panedge_dict = {'in': [], 'out': []}
+            l = getends(panedge)
+            panedge_dict['in'] = l[0]
+            panedge_dict['out'] = l[1]
+            pan_df.append(panedge_dict)
+    pd.DataFrame(pan_df).to_csv(base_path+'pangraph_edges_list.csv', sep=';',encoding='utf-8')
 
-    hyperedges_df = split_edges(hyperedge_list)
-    hyperedges_df["source"] = hyperedges_df["source"].apply(lambda x: x.replace('[[', '[').replace(']]', ']').replace("'",""))
-    hyperedges_df["target"] = hyperedges_df["target"].apply(lambda x: x.replace(']]', ']').replace('[[', '[').replace("'",""))
+    hyperedge_list = []
+    for panedge in panedges_list:
+        #if '(' in s and ',' in s:
+        hyperedge_list.append(hyper_from_pan(panedge))
+
+    hyperedges_df = pd.DataFrame(hyperedge_list, columns=["in", "out"])
+    #hyperedges_df = split_edges(hyperedge_list)
+    #hyperedges_df["in"] = hyperedges_df["in"].apply(lambda x: x.replace('[[', '[').replace(']]', ']').replace("'",""))
+    #hyperedges_df["out"] = hyperedges_df["out"].apply(lambda x: x.replace(']]', ']').replace('[[', '[').replace("'",""))
 
     hyperedges_df.to_csv(base_path+"hypergraph_edges_list.csv", sep=';',encoding='utf-8')
 
-    to_add, to_del, levi_edges = preprocessing()
-    new_edges_df = df_operations(levi_edges, to_add, to_del)
+    levi_edges = []
+    for panedge in panedges_list: 
+        l = levi_from_pan(panedge)
+        levi_edges.append(l[0])
+        levi_edges.append(l[1])
+
+    levi_edges_df = pd.DataFrame(levi_edges)
+    levi_edges_df.columns = ['in', 'out']
+    levi_edges_df["in"] = levi_edges_df["in"].apply(lambda x: str(x).replace('[', '(').replace(']', ')').replace("'", '').replace(', ',','))
+    levi_edges_df["out"] = levi_edges_df["out"].apply(lambda x: str(x).replace('[', '(').replace(']', ')').replace("'", '').replace(', ',','))
+    levi_edges_df.to_csv(base_path+'levi_pangraph_edges_list.csv', sep=';')#,encoding='utf-8')
+

@@ -19,7 +19,7 @@ def katz_centrality(obj, b):
     n = A.shape[0]
     a = 0.9 * (1 / leadingeigenvalue)
     
-    s = inv(np.eye(n) - (a * A.T)) @ (b * np.ones((n, 1)))
+    s = inv(np.eye(n) - (a * A)) @ (b * np.ones((n, 1)))
     
     return s, leadingeigenvalue
 
@@ -37,7 +37,7 @@ def test_centralities(df):
     
 
     
-for test_run_on in [True, False]:
+for test_run_on in [False]:  #True, 
     #running processing for test case and coffee agroecosystem 
 
     if test_run_on:
@@ -46,11 +46,11 @@ for test_run_on in [True, False]:
         base_path = 'output_files/'
 
     # representations import
-    HAM0 = pd.read_csv(base_path+'adjacency_edges_list_files/adj_matrix_hypergraph.csv')
+    HAM0 = pd.read_csv(base_path+'adjacency_edges_list_files/adj_matrix_hypergraph.csv', sep = ';')
     HAM0 = HAM0.drop(columns=['Unnamed: 0'])
-    PAM0 = pd.read_csv(base_path+'adjacency_edges_list_files/adj_matrix_pangraph.csv')
+    PAM0 = pd.read_csv(base_path+'0206_adj_in.csv', sep = ';')
     PAM0 = PAM0.drop(columns=['Unnamed: 0'])
-    PGAM0 = pd.read_csv(base_path+'adjacency_edges_list_files/adj_matrix_levi_pangraph.csv')
+    PGAM0 = pd.read_csv(base_path+'adjacency_edges_list_files/adj_matrix_levi_pangraph.csv', sep = ';')
     PGAM0 = PGAM0.drop(columns=['Unnamed: 0'])
     HAM0.name = "HAM0"
     PAM0.name = "PAM0"
@@ -66,8 +66,8 @@ for test_run_on in [True, False]:
         # create a temporary df for each representation
         temp_df = pd.DataFrame({
             'species': df.columns,
-            f'Katz_in_{df.name[0]}': katz_rep.flatten(),
-            f'Katz_out_{df.name[0]}': katz_reversed_rep.flatten()
+            f'Katz_out_{df.name[0]}': katz_rep.flatten(),
+            f'Katz_in_{df.name[0]}': katz_reversed_rep.flatten()
         })
 
         if df is PAM0:

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def heatmap_plot(df_map):
     #create multicolumn heatmap to visualize centralities and node degrees for funndamental vertices
-    df = pd.read_csv(base_path+'katz_centralities.csv')
+    df = pd.read_csv(base_path+'katz_centralities.csv', sep = ',')
 
     df.index = df['species']
     df = df.drop(columns=['species'])
@@ -75,12 +75,12 @@ def heatmap_plot(df_map):
         plt.tight_layout()
         fig.savefig(base_path+f'heatmap_{type}.pdf', bbox_inches = "tight")
 
-
-for test_run_on in [True, False]:
+for test_run_on in [ False]: #True,
     #running the heatmap code for test case and coffee agroecosystem
     if test_run_on:
         base_path = 'test_output_files/'
     else:
         base_path = 'output_files/'
-    df = pd.read_csv(base_path+'degrees.csv')
+    df = pd.read_csv(base_path+'degrees.csv', sep=';')
     heatmap_plot(df)
+    
