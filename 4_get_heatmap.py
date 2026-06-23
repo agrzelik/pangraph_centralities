@@ -75,7 +75,7 @@ def heatmap_plot(df_map):
         plt.tight_layout()
         fig.savefig(base_path+f'heatmap_{type}.pdf', bbox_inches = "tight")
 
-for test_run_on in [ False]: #True,
+for test_run_on in [True, False]:
     #running the heatmap code for test case and coffee agroecosystem
     if test_run_on:
         base_path = 'test_output_files/'
@@ -83,4 +83,3 @@ for test_run_on in [ False]: #True,
         base_path = 'output_files/'
     df = pd.read_csv(base_path+'degrees.csv', sep=';')
     heatmap_plot(df)
-    

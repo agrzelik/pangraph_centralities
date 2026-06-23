@@ -77,7 +77,7 @@ def levi_from_pan(panedge):
         ends=getends(panedge)
         return([[ends[0],ends],[ends,ends[1]]]) 
 
-for test_run_on in [ False]:#[True, False]:
+for test_run_on in [True, False]:#[True, False]:
     #running processing for test case and coffee agroecosystem 
 
     if test_run_on:
@@ -86,7 +86,7 @@ for test_run_on in [ False]:#[True, False]:
         base_path='output_files/adjacency_edges_list_files/'
 
     if test_run_on == True:
-        panedges = pd.read_csv('./files/pangraph-test.csv', delimiter=';', index_col=0, header = None)
+        panedges = pd.read_csv('./files/test-panedges.csv', delimiter=';', index_col=0, header = None)
     else:
         panedges = pd.read_csv('./files/panedges.csv', delimiter=';', index_col=0, header = None)
 

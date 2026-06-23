@@ -1,102 +1,102 @@
 ;in;out
-0;(Azteca,Azya orbigera);Azteca
-1;(Scale,Diomus);Scale
-2;(Parasites 2,Azya orbigera);Parasites 2
-3;(Parasites 2,Azya orbigera);(Azteca,(Parasites 2,Azya orbigera))
-4;(Scale,Azteca);Scale
-5;(Parasites 1,Linyphiidae);Parasites 1
-6;Azteca;(Scale,Azteca)
-7;Scale;(Parasites 1,Scale)
-8;Scale;(Azya orbigera,Scale)
-9;Scale;(White Halo Fungus,Scale)
-10;(Scale,White Halo Fungus);Scale
-11;Parasites 1;(Linyphiidae,Parasites 1)
-12;Parasites 1;(Scale,Parasites 1)
-13;(Azteca,(Azya orbigera,Scale));Azteca
-14;(Linyphiidae,Parasites 1);Linyphiidae
-15;White Halo Fungus;(Scale,White Halo Fungus)
-16;(Azteca,(Scale,Azya orbigera));Azteca
-17;(Azteca,(Scale,Parasites 1));Azteca
-18;Azya orbigera;(Azteca,Azya orbigera)
-19;Azya orbigera;(Parasites 2,Azya orbigera)
-20;Azya orbigera;(Scale,Azya orbigera)
-21;(Berry Borer,Pseudomyrmex);Berry Borer
-22;(Parasites 1,Scale);Parasites 1
-23;(Parasites 1,Scale);(Azteca,(Parasites 1,Scale))
-24;(Azya orbigera,Parasites 2);Azya orbigera
-25;(Azya orbigera,Parasites 2);(Azteca,(Azya orbigera,Parasites 2))
-26;(Azteca,(Parasites 1,Scale));Azteca
-27;Pheidole synanthropica;(Scale,Pheidole synanthropica)
-28;Linyphiidae;(Parasites 1,Linyphiidae)
-29;Linyphiidae;(Phorid,Linyphiidae)
-30;(Scale,Pheidole synanthropica);Scale
-31;(Linyphiidae,Phorid);Linyphiidae
-32;(Azteca,Pseudomyrmex);Azteca
-33;Parasites 2;(Azya orbigera,Parasites 2)
-34;(Phorid,Linyphiidae);Phorid
-35;Phorid;(Linyphiidae,Phorid)
-36;(Pseudomyrmex,Berry Borer);Pseudomyrmex
-37;(Azteca,(Parasites 2,Azya orbigera));Azteca
-38;(Scale,Azya orbigera);Scale
-39;(Scale,Azya orbigera);(Azteca,(Scale,Azya orbigera))
-40;Berry Borer;(Pseudomyrmex,Berry Borer)
-41;Diomus;(Scale,Diomus)
-42;(Scale,Parasites 1);Scale
-43;(Scale,Parasites 1);(Azteca,(Scale,Parasites 1))
-44;(Azya orbigera,Scale);(Azteca,(Azya orbigera,Scale))
-45;(Azya orbigera,Scale);Azya orbigera
-46;(Azteca,(Azya orbigera,Parasites 2));Azteca
-47;Pseudomyrmex;(Berry Borer,Pseudomyrmex)
-48;Pseudomyrmex;(Azteca,Pseudomyrmex)
-49;(White Halo Fungus,Scale);White Halo Fungus
-50;Berry Borer;Pheidole protensa
-51;Pheidole protensa;Pheidole synanthropica
-52;Phorid;Azteca
-53;(Phorid,Linyphiidae);Azteca
-54;Berry Borer;Azteca
-55;Pseudomyrmex;Solenopsis picea
-56;Azteca;Berry Borer
-57;(Scale,Pheidole synanthropica);Azteca
-58;Coffee Rust;Mycodiplosis
-59;Solenopsis geminata;Pheidole synanthropica
-60;Berry Borer;Wasamannia auropunctata
-61;Wasamannia auropunctata;Solenopsis picea
-62;(Azteca,(Parasites 1,Scale));Phorid
-63;(Pseudomyrmex,Berry Borer);Azteca
-64;Pheidole synanthropica;Azteca
-65;(Linyphiidae,Parasites 1);Azteca
-66;Azya orbigera;Diomus
-67;Leaf Miner;Parasites 3
-68;(Azteca,(Azya orbigera,Scale));Phorid
-69;Pseudomyrmex;Leaf Miner
-70;Pseudomyrmex;Pheidole synanthropica
-71;Diomus;Azya orbigera
-72;Pheidole synanthropica;Pheidole protensa
-73;Solenopsis picea;Wasamannia auropunctata
-74;Coffee Rust;White Halo Fungus
-75;Pheidole synanthropica;Solenopsis geminata
-76;(Scale,White Halo Fungus);Azya orbigera
-77;(Azteca,Pseudomyrmex);Phorid
-78;(Azteca,(Parasites 2,Azya orbigera));Phorid
-79;Berry Borer;Pheidole synanthropica
-80;(Scale,Azteca);Pheidole synanthropica
-81;Pheidole synanthropica;Berry Borer
-82;White Halo Fungus;Coffee Rust
-83;(Azteca,(Scale,Parasites 1));Phorid
-84;(Parasites 1,Linyphiidae);Azteca
-85;(Scale,Parasites 1);Pheidole synanthropica
-86;(White Halo Fungus,Scale);Azya orbigera
-87;(Linyphiidae,Phorid);Azteca
-88;(Azteca,(Azya orbigera,Parasites 2));Phorid
-89;Pheidole synanthropica;Pseudomyrmex
-90;Wasamannia auropunctata;Berry Borer
-91;Mycodiplosis;Coffee Rust
-92;(Azteca,Azya orbigera);Phorid
+0;(Azteca,(Scale,Parasites 1));Azteca
+1;(Scale,Parasites 1);(Azteca,(Scale,Parasites 1))
+2;(Scale,Parasites 1);Scale
+3;Azya orbigera;(Parasites 2,Azya orbigera)
+4;Azya orbigera;(Scale,Azya orbigera)
+5;Azya orbigera;(Azteca,Azya orbigera)
+6;(Linyphiidae,Phorid);Linyphiidae
+7;Linyphiidae;(Parasites 1,Linyphiidae)
+8;Linyphiidae;(Phorid,Linyphiidae)
+9;Scale;(Parasites 1,Scale)
+10;Scale;(Azya orbigera,Scale)
+11;Scale;(White Halo Fungus,Scale)
+12;(Parasites 1,Scale);(Azteca,(Parasites 1,Scale))
+13;(Parasites 1,Scale);Parasites 1
+14;(Scale,Diomus);Scale
+15;(Azya orbigera,Scale);Azya orbigera
+16;(Azya orbigera,Scale);(Azteca,(Azya orbigera,Scale))
+17;Parasites 2;(Azya orbigera,Parasites 2)
+18;Azteca;(Scale,Azteca)
+19;(Parasites 1,Linyphiidae);Parasites 1
+20;Diomus;(Scale,Diomus)
+21;Phorid;(Linyphiidae,Phorid)
+22;(Azya orbigera,Parasites 2);Azya orbigera
+23;(Azya orbigera,Parasites 2);(Azteca,(Azya orbigera,Parasites 2))
+24;(Berry Borer,Pseudomyrmex);Berry Borer
+25;(Linyphiidae,Parasites 1);Linyphiidae
+26;(White Halo Fungus,Scale);White Halo Fungus
+27;(Azteca,(Parasites 2,Azya orbigera));Azteca
+28;(Parasites 2,Azya orbigera);Parasites 2
+29;(Parasites 2,Azya orbigera);(Azteca,(Parasites 2,Azya orbigera))
+30;Pseudomyrmex;(Berry Borer,Pseudomyrmex)
+31;Pseudomyrmex;(Azteca,Pseudomyrmex)
+32;(Azteca,(Parasites 1,Scale));Azteca
+33;(Scale,Azteca);Scale
+34;(Scale,Pheidole synanthropica);Scale
+35;(Phorid,Linyphiidae);Phorid
+36;(Azteca,(Azya orbigera,Scale));Azteca
+37;(Scale,White Halo Fungus);Scale
+38;Parasites 1;(Scale,Parasites 1)
+39;Parasites 1;(Linyphiidae,Parasites 1)
+40;White Halo Fungus;(Scale,White Halo Fungus)
+41;(Scale,Azya orbigera);Scale
+42;(Scale,Azya orbigera);(Azteca,(Scale,Azya orbigera))
+43;(Azteca,(Scale,Azya orbigera));Azteca
+44;Berry Borer;(Pseudomyrmex,Berry Borer)
+45;(Pseudomyrmex,Berry Borer);Pseudomyrmex
+46;(Azteca,Azya orbigera);Azteca
+47;Pheidole synanthropica;(Scale,Pheidole synanthropica)
+48;(Azteca,Pseudomyrmex);Azteca
+49;(Azteca,(Azya orbigera,Parasites 2));Azteca
+50;Wasamannia auropunctata;Berry Borer
+51;(Azteca,(Parasites 1,Scale));Phorid
+52;Pheidole synanthropica;Pheidole protensa
+53;(Pseudomyrmex,Berry Borer);Azteca
+54;Solenopsis picea;Wasamannia auropunctata
+55;Azteca;Berry Borer
+56;(Scale,White Halo Fungus);Azya orbigera
+57;Berry Borer;Pheidole protensa
+58;Berry Borer;Azteca
+59;Berry Borer;Pheidole synanthropica
+60;(White Halo Fungus,Scale);Azya orbigera
+61;Coffee Rust;Mycodiplosis
+62;Pheidole synanthropica;Solenopsis geminata
+63;(Azteca,Azya orbigera);Phorid
+64;(Scale,Diomus);Pheidole synanthropica
+65;(Linyphiidae,Phorid);Azteca
+66;Leaf Miner;Pseudomyrmex
+67;Pheidole synanthropica;Berry Borer
+68;(Azteca,(Parasites 2,Azya orbigera));Phorid
+69;Diomus;Azya orbigera
+70;(Scale,Parasites 1);Pheidole synanthropica
+71;(Scale,Pheidole synanthropica);Azteca
+72;Pheidole protensa;Berry Borer
+73;Solenopsis picea;Pseudomyrmex
+74;(Azteca,(Azya orbigera,Parasites 2));Phorid
+75;(Azteca,(Scale,Azya orbigera));Phorid
+76;Coffee Rust;White Halo Fungus
+77;Pheidole protensa;Pheidole synanthropica
+78;Pseudomyrmex;Solenopsis picea
+79;Azya orbigera;Diomus
+80;Wasamannia auropunctata;Solenopsis picea
+81;(Phorid,Linyphiidae);Azteca
+82;Pseudomyrmex;Leaf Miner
+83;(Scale,Azteca);Pheidole synanthropica
+84;(Azteca,(Scale,Parasites 1));Phorid
+85;(Azteca,Pseudomyrmex);Phorid
+86;White Halo Fungus;Coffee Rust
+87;Phorid;Azteca
+88;(Parasites 1,Scale);Pheidole synanthropica
+89;Solenopsis geminata;Pheidole synanthropica
+90;(Parasites 1,Linyphiidae);Azteca
+91;Parasites 3;Leaf Miner
+92;Pheidole synanthropica;Pseudomyrmex
 93;(Berry Borer,Pseudomyrmex);Azteca
-94;Leaf Miner;Pseudomyrmex
-95;Pheidole protensa;Berry Borer
-96;(Azteca,(Scale,Azya orbigera));Phorid
-97;Solenopsis picea;Pseudomyrmex
-98;Parasites 3;Leaf Miner
-99;(Parasites 1,Scale);Pheidole synanthropica
-100;(Scale,Diomus);Pheidole synanthropica
+94;(Azteca,(Azya orbigera,Scale));Phorid
+95;Pheidole synanthropica;Azteca
+96;Pseudomyrmex;Pheidole synanthropica
+97;Leaf Miner;Parasites 3
+98;(Linyphiidae,Parasites 1);Azteca
+99;Berry Borer;Wasamannia auropunctata
+100;Mycodiplosis;Coffee Rust

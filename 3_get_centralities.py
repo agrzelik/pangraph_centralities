@@ -14,10 +14,14 @@ def katz_centrality(obj, b):
     #katz centrality formula 
     A = np.array(obj, dtype=float) 
     eigenvalues, _ = eig(A)
-    leadingeigenvalue = np.max(eigenvalues.real)
+    leadingeigenvalue = np.max(eigenvalues.real) 
     
     n = A.shape[0]
-    a = 0.9 * (1 / leadingeigenvalue)
+
+    if np.isclose(leadingeigenvalue, 0):
+        a = 1.0
+    else:
+        a = 0.9 / leadingeigenvalue
     
     s = inv(np.eye(n) - (a * A)) @ (b * np.ones((n, 1)))
     
@@ -37,7 +41,7 @@ def test_centralities(df):
     
 
     
-for test_run_on in [False]:  #True, 
+for test_run_on in [True, False]: 
     #running processing for test case and coffee agroecosystem 
 
     if test_run_on:
@@ -48,7 +52,7 @@ for test_run_on in [False]:  #True,
     # representations import
     HAM0 = pd.read_csv(base_path+'adjacency_edges_list_files/adj_matrix_hypergraph.csv', sep = ';')
     HAM0 = HAM0.drop(columns=['Unnamed: 0'])
-    PAM0 = pd.read_csv(base_path+'0206_adj_in.csv', sep = ';')
+    PAM0 = pd.read_csv(base_path+'adjacency_edges_list_files/adj_matrix_pangraph.csv', sep = ';')
     PAM0 = PAM0.drop(columns=['Unnamed: 0'])
     PGAM0 = pd.read_csv(base_path+'adjacency_edges_list_files/adj_matrix_levi_pangraph.csv', sep = ';')
     PGAM0 = PGAM0.drop(columns=['Unnamed: 0'])
