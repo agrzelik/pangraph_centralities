@@ -59,8 +59,6 @@ def get_pangraph_vertices(pangraph_levi_adjacency):
                 levi_edges.append({'0': col, '1': row})
 
     levi_edges_df = pd.DataFrame(levi_edges)
-    #levi_edges_df.to_csv(base_path+'levi_pangraph_edges_list.csv', sep=';',encoding='utf-8')
-
     levi_edges_df.columns = ['in','out']
 
     deg_out = pangraph_levi_adjacency.sum(axis=0)
@@ -127,8 +125,6 @@ def df_operations(df, to_add, to_del):
             new_start = base_end[1]
 
         dfpangraph_edges = dfpangraph_edges._append({'in': new_start, 'out': new_end}, ignore_index=True)
-
-    #dfpangraph_edges.to_csv(base_path+'pangraph_edges_list.csv', sep=';',encoding='utf-8')
 
     return dfpangraph_edges
 
@@ -272,6 +268,7 @@ for test_run_on in [True, False]:
             continue
     
     #get vertices from V_P
+    
     pangraph_levi_adjacency = pd.read_csv(base_path + 'adj_matrix_levi_pangraph.csv', delimiter=';', index_col='Unnamed: 0')
 
     to_add, to_del, levi_edges = get_pangraph_vertices(pangraph_levi_adjacency)

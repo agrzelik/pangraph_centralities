@@ -77,7 +77,7 @@ def levi_from_pan(panedge):
         ends=getends(panedge)
         return([[ends[0],ends],[ends,ends[1]]]) 
 
-for test_run_on in [True, False]:#[True, False]:
+for test_run_on in [True, False]:
     #running processing for test case and coffee agroecosystem 
 
     if test_run_on:
@@ -109,10 +109,6 @@ for test_run_on in [True, False]:#[True, False]:
         hyperedge_list.append(hyper_from_pan(panedge))
 
     hyperedges_df = pd.DataFrame(hyperedge_list, columns=["in", "out"])
-    #hyperedges_df = split_edges(hyperedge_list)
-    #hyperedges_df["in"] = hyperedges_df["in"].apply(lambda x: x.replace('[[', '[').replace(']]', ']').replace("'",""))
-    #hyperedges_df["out"] = hyperedges_df["out"].apply(lambda x: x.replace(']]', ']').replace('[[', '[').replace("'",""))
-
     hyperedges_df.to_csv(base_path+"hypergraph_edges_list.csv", sep=';',encoding='utf-8')
 
     levi_edges = []

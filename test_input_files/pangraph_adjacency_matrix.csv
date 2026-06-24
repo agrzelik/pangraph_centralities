@@ -1,10 +1,10 @@
-﻿;Phorid;Azteca;Beatle;Scale;"(Scale,Beatle)";"(Beatle,Scale)";"(Azteca,Beatle)";"(Azteca,(Scale,Beatle))";"(Azteca,(Beatle,Scale))"
+﻿;Phorid;Azteca;Beetle;Scale;"(Scale,Beetle)";"(Beetle,Scale)";"(Azteca,Beetle)";"(Azteca,(Scale,Beetle))";"(Azteca,(Beetle,Scale))"
 Phorid;0;0;0;0;0;0;1;1;1
 Azteca;1;0;0;0;0;0;1;1;1
-Beatle;0;0;0;0;0;1;0;0;0
+Beetle;0;0;0;0;0;1;0;0;0
 Scale;0;1;0;0;1;0;0;0;0
-"(Scale,Beatle)";0;0;1;0;0;0;0;0;0
-"(Beatle,Scale)";0;0;0;1;0;0;0;0;0
-"(Azteca,Beatle)";0;0;1;0;0;0;0;0;0
-"(Azteca,(Scale,Beatle))";0;0;0;0;1;0;0;0;0
-"(Azteca,(Beatle,Scale))";0;0;0;0;0;1;0;0;0
+"(Scale,Beetle)";0;0;1;0;0;0;0;0;0
+"(Beetle,Scale)";0;0;0;1;0;0;0;0;0
+"(Azteca,Beetle)";0;0;1;0;0;0;0;0;0
+"(Azteca,(Scale,Beetle))";0;0;0;0;1;0;0;0;0
+"(Azteca,(Beetle,Scale))";0;0;0;0;0;1;0;0;0
